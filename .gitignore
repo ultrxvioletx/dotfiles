@@ -1,0 +1,36 @@
+# =========================================================================
+# === .gitignore para dotfiles en el directorio home (Opt-in)
+# =========================================================================
+
+# Ignorar todo por defecto.
+*
+
+# No ignorar este mismo archivo .gitignore
+!.gitignore
+
+# No ignorar los archivos de configuración
+!.zshrc
+
+# Manejo especial para la carpeta .config
+!.config/
+# ignoramos todo lo que hay dentro de .config por defecto
+.config/*
+# incluimos explícitamente solo ciertas sub-carpetas
+!.config/gtk-3.0/
+!.config/gtk-3.0/**
+!.config/hypr/
+!.config/hypr/**
+!.config/hyprpanel/
+!.config/hyprpanel/**
+!.config/kitty/
+!.config/kitty/**
+# !.config/nvim/
+!.config/ranger/
+!.config/ranger/**
+# !.config/rofi/
+!.config/spicefy/
+!.config/spicefy/**
+!.config/wlogout/
+!.config/wlogout/**
+!.config/xsettingsd/
+!.config/xsettingsd/**
