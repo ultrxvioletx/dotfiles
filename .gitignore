@@ -7,15 +7,19 @@
 
 # No ignorar este mismo archivo .gitignore
 !.gitignore
-
 # No ignorar los archivos de configuración
 !.zshrc
+# No ignorar imagenes
+!*.jpg
+!*.png
 
 # Manejo especial para la carpeta .config
 !.config/
 # ignoramos todo lo que hay dentro de .config por defecto
 .config/*
 # incluimos explícitamente solo ciertas sub-carpetas
+!.config/fastfetch/
+!.config/fastfetch/**
 !.config/gtk-3.0/
 !.config/gtk-3.0/**
 !.config/hypr/
