@@ -88,8 +88,21 @@ prompt_venv() {
 
 # 4. Definición final del PROMPT
 #    Usamos comillas simples para que $(prompt_venv) se ejecute cada vez.
-PROMPT='%{$fg[cyan]%}%T%{$reset_color%} $(prompt_venv)%{$fg[green]%}%n@%m%{$reset_color%}${vcs_info_msg_0_} %{$fg[magenta]%}%~ %{$fg[magenta]%}♡%{$reset_color%} '
+# rose-pine-moon
+# PROMPT='%{$fg[cyan]%}%T%{$reset_color%} $(prompt_venv)%{$fg[green]%}%n@%m%{$reset_color%}${vcs_info_msg_0_} %{$fg[magenta]%}%~ %{$fg[magenta]%}♡%{$reset_color%} '
+# typeset -A ZSH_HIGHLIGHT_STYLES
+# ZSH_HIGHLIGHT_STYLES[default]="fg=white"
+# ZSH_HIGHLIGHT_STYLES[command]="fg=white"
+# ZSH_HIGHLIGHT_STYLES[builtin]='fg=white'
+# ZSH_HIGHLIGHT_STYLES[alias]='fg=white'
+# ZSH_HIGHLIGHT_STYLES[path]="fg=white"
+# ZSH_HIGHLIGHT_STYLES[arg]="fg=blue"
+# ZSH_HIGHLIGHT_STYLES[string]="fg=yellow"
+# ZSH_HIGHLIGHT_STYLES[precommand]="fg=white"
+# ZSH_HIGHLIGHT_STYLES[function]='fg=green'
 
+# rose-pine
+PROMPT='%{$fg[green]%}%T%{$reset_color%} $(prompt_venv)%{$fg[cyan]%}%n@%m%{$reset_color%}${vcs_info_msg_0_} %{$fg[magenta]%}%~ %{$fg[magenta]%}♡%{$reset_color%} '
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[default]="fg=white"
 ZSH_HIGHLIGHT_STYLES[command]="fg=white"
@@ -100,6 +113,7 @@ ZSH_HIGHLIGHT_STYLES[arg]="fg=blue"
 ZSH_HIGHLIGHT_STYLES[string]="fg=yellow"
 ZSH_HIGHLIGHT_STYLES[precommand]="fg=white"
 ZSH_HIGHLIGHT_STYLES[function]='fg=green'
+
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -139,3 +153,9 @@ export VISUAL='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+# inicializa fastfetch solo en shell interactiva
+if [[ -o INTERACTIVE ]]; then
+    clear
+    fastfetch
+fi

@@ -34,3 +34,7 @@
 !.config/wlogout/**
 !.config/xsettingsd/
 !.config/xsettingsd/**
+
+# ignorar cache de python y compilados
+**/__pycache__/
+*.pyc

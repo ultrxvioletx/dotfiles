@@ -479,7 +479,7 @@
   "theme.bar.menus.label": "#83a598",
   "theme.bar.menus.feinttext": "#3c3836",
   "theme.bar.menus.dimtext": "#665c54",
-  "theme.bar.menus.text": "#ebdbb2",
+  "theme.bar.menus.text": "#e0def4",
   "theme.bar.menus.border.color": "#3c3836",
   "theme.bar.menus.cards": "#1d2021",
   "theme.bar.menus.background": "#1d2021",
@@ -690,5 +690,8 @@
   "menus.dashboard.shortcuts.left.shortcut4.icon": "",
   "menus.dashboard.shortcuts.left.shortcut4.command": "",
   "menus.dashboard.shortcuts.left.shortcut4.tooltip": "",
-  "bar.clock.icon": ""
+  "bar.clock.icon": "",
+  "bar.workspaces.icons.available": "",
+  "bar.workspaces.applicationIconEmptyWorkspace": "♡",
+  "bar.workspaces.spacing": 1
 }
