@@ -107,7 +107,7 @@ prompt_venv() {
         echo "%{$fg[white]%}(${VIRTUAL_ENV:t}) %{$reset_color%}"
     fi
 }
-# Finally, the prompt.
+
 # PROMPT='${PR_SET_CHARSET}${PR_STITLE}${(e)PR_TITLEBAR}\
 # ${PR_CYAN}${PR_ULCORNER}${PR_HBAR}${PR_GREY}(\
 # ${PR_GREEN}%n@%m%<...<%<<${PR_GREY})\
@@ -130,7 +130,6 @@ prompt_venv() {
 # ${PR_CYAN}${PR_HBAR}${PR_NO_COLOUR} '
 
 PROMPT='%{$fg[cyan]%}%T%{$reset_color%} $(prompt_venv)%{$fg[green]%}%n@%m%{$reset_color%}${vcs_info_msg_0_} %{$fg[magenta]%}%~ %{$fg[magenta]%}♡%{$reset_color%} '
-
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[default]="fg=white"
@@ -181,6 +180,16 @@ export VISUAL='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# Función para ignorar mupdf en pacman -Syu, ya que su versión es incompatible con sioyek
+sudo() {
+    if [[ $1 == "pacman" && $2 == "-Syu" ]]; then
+        command sudo pacman -Syu --ignore mupdf,libmupdf
+    else
+        command sudo "$@"
+    fi
+}
 
 
 # inicializa fastfetch solo en shell interactiva

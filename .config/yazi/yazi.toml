@@ -1,0 +1,13 @@
+# ~/.config/yazi/yazi.toml
+[mgr]
+show_hidden = false
+
+[opener]
+sioyek = [
+	{ run = 'sioyek "$0"', orphan = true, desc = "Sioyek", for = "unix" }
+]
+
+[open]
+prepend_rules = [
+	{ mime = "application/pdf", use = ["sioyek", "reveal"] }
+]

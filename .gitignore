@@ -1,5 +1,5 @@
 # =========================================================================
-# === .gitignore para dotfiles en el directorio home (Opt-in)
+# === .gitignore para dotfiles en mi directorio home
 # =========================================================================
 
 # Ignorar todo por defecto.
@@ -34,10 +34,15 @@
 # !.config/rofi/
 !.config/spicefy/
 !.config/spicefy/**
+!.config/systemd/
+!.config/systemd/user/
+!.config/systemd/user/wallpaper.service
 !.config/wlogout/
 !.config/wlogout/**
 !.config/xsettingsd/
 !.config/xsettingsd/**
+!.config/yazi/
+!.config/yazi/**
 
 # ignorar cache de python y compilados
 **/__pycache__/

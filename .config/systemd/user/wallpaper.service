@@ -1,0 +1,18 @@
+[Unit]
+Description=Wallpaper daemon for Hyprland
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.config/hypr/scripts/wallpaper-daemon.sh
+Restart=on-failure
+RestartSec=3
+
+# inyectar entorno Wayland
+Environment=WAYLAND_DISPLAY=%env:WAYLAND_DISPLAY%
+Environment=XDG_RUNTIME_DIR=%env:XDG_RUNTIME_DIR%
+Environment=HOME=%h
+
+[Install]
+WantedBy=graphical-session.target

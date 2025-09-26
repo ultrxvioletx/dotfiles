@@ -39,8 +39,8 @@
   "panels": [
     {
       "id": "panel0",
-      "edge": "EDGE_RIGHT",
-      "size": 64,
+      "edge": "EDGE_TOP",
+      "size": 30,
       "monitor": "",
       "modules": [
         {
@@ -700,5 +700,8 @@
   "bar.customModules.netstat.pollingInterval": 10000,
   "bar.customModules.netstat.dynamicIcon": false,
   "bar.customModules.netstat.icon": "",
-  "bar.workspaces.workspaceMask": false
+  "bar.workspaces.workspaceMask": false,
+  "theme.bar.menus.menu.media.scaling": 100,
+  "theme.bar.menus.menu.volume.scaling": 100,
+  "scalingPriority": "hyprland"
 }

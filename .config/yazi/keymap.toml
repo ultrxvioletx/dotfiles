@@ -1,0 +1,11 @@
+# ~/.config/yazi/keymap.toml
+
+[mgr]
+prepend_keymap = [
+    { on = [ "e" ], run = 'shell -- code "$0"', desc = "Open hovered file with vscode" },
+    { on = [ "E" ], run = 'shell -- code "$@"', desc = "Open selected file(s) with vscode" },
+]
+
+append_keymap = [
+    { on = [ "<C-t>" ], run = 'shell "kitty ."', desc = "Open $SHELL here" }
+]
