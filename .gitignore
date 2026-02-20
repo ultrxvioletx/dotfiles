@@ -19,6 +19,11 @@
 # ignoramos todo lo que hay dentro de .config por defecto
 .config/*
 # incluimos explícitamente solo ciertas sub-carpetas
+!.config/Code/
+!.config/Code/User/
+!.config/Code/User/settings.json
+!.config/Code/User/keybindings.json
+!.config/Code/User/vscode-extensions.txt
 !.config/fastfetch/
 !.config/fastfetch/**
 !.config/gtk-3.0/

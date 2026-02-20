@@ -1,15 +1,15 @@
 [Unit]
-Description=Wallpaper daemon
+Description=Change wallpaper
 After=graphical-session.target
-PartOf=graphical-session.target
+Requires=graphical-session.target
 
 [Service]
 Type=oneshot
-ExecStart=%h/.config/hypr/scripts/wallpaper-daemon.sh
-Environment=DISPLAY=:0
-Environment=WAYLAND_DISPLAY=wayland-1
-Environment=HOME=%h
-User=ultrxioletx
+
+Environment="DISPLAY=:0"
+Environment="WAYLAND_DISPLAY=wayland-1"
+Environment="HYPRLAND_INSTANCE_SIGNATURE=%t/hypr"
+ExecStart=/home/ultrxvioletx/.config/hypr/scripts/wallpaper.sh
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

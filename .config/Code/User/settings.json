@@ -1,0 +1,42 @@
+{
+    "window.zoomLevel": 1,
+    "security.workspace.trust.untrustedFiles": "open",
+    "http.experimental.systemCertificatesV2": true,
+    "indentRainbow.excludedLanguages": [
+        "plaintext"
+    ],
+    "indentRainbow.colors": [
+        "rgba(89,128,165,0.07)",
+        "rgba(178,148,207,0.07)",
+        "rgba(186,224,189,0.07)",
+        "rgba(255,163,165,0.07)",
+        "rgba(156,207,216,0.07)"
+    ],
+    "indentRainbow.errorColor": "rgba(128,32,32,0.2)",
+    "indentRainbow.indicatorStyle": "light",
+    "indentRainbow.lightIndicatorStyleLineWidth": 5,
+    "indentRainbow.tabmixColor": "rgba(128,32,96,0.9)",
+    "editor.colorDecorators": false,
+    "editor.wordWrap": "on",
+    "editor.tabSize": 2,
+    "terminal.integrated.shellIntegration.enabled": false,
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "/usr/sbin/bash"
+        },
+        "zsh": {
+            "path": "/bin/zsh"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "workbench.colorCustomizations": {
+        "editor.selectionHighlightBackground": "#F7CAC950"
+    },
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "window.newWindowProfile": "Default",
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.h5": "h5web.viewer"
+    },
+    "workbench.colorTheme": "Pink Cat Boo",
+}
