@@ -88,7 +88,7 @@ done
 
 ACTION=${1:-usage}
 SUBJECT=${2:-screen}
-FILE=${3:-$(getTargetDirectory)/Pictures/Screenshots/$(date -Ins).png}
+FILE=${3:-$(getTargetDirectory)/Pictures/screenshots/$(date -Ins).png}
 FILE_EDITOR=${3:-$(tmp_editor_directory)/$(date -Ins).png}
 
 if [ "$ACTION" != "save" ] && [ "$ACTION" != "copy" ] && [ "$ACTION" != "edit" ] && [ "$ACTION" != "copysave" ] && [ "$ACTION" != "check" ]; then

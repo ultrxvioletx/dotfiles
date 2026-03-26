@@ -75,10 +75,11 @@ function theme_precmd {
     local promptsize=${#${(%):---(%n@%m)---()--}}
     local timesize=8
     local pwdsize=${#${(%):-%~}} #no se usa pero lo dejo por si acaso
-    local venvpromptsize=$((${#$(virtualenv_prompt_info)})) #no se usa pero lo dejo por si acaso
+    #local venvpromptsize=$((${#$(virtualenv_prompt_info)})) #no se usa pero lo dejo por si acaso
 
     PR_FILLBAR="\${(l:$(( TERMWIDTH - (promptsize + timesize) ))::${PR_HBAR}:)}"
 }
+autoload -U colors && colorss
 autoload -U add-zsh-hook
 add-zsh-hook precmd  theme_precmd
 # Set the prompt
@@ -108,29 +109,7 @@ prompt_venv() {
     fi
 }
 
-# PROMPT='${PR_SET_CHARSET}${PR_STITLE}${(e)PR_TITLEBAR}\
-# ${PR_CYAN}${PR_ULCORNER}${PR_HBAR}${PR_GREY}(\
-# ${PR_GREEN}%n@%m%<...<%<<${PR_GREY})\
-# ${PR_CYAN}${PR_HBAR}${PR_HBAR}${(e)PR_FILLBAR}${PR_HBAR}\
-# ${PR_GREY}(${PR_GREEN}%D{%H:%M:%S}\
-# ${PR_GREY})${PR_CYAN}${PR_HBAR}\
-
-# ${PR_CYAN}${PR_LLCORNER}${PR_CYAN}${PR_HBAR}\
-# ${PR_WHITE}$(prompt_venv)${PR_MAGENTA}%~ ${PR_MAGENTA}♡\
-# ${PR_NO_COLOUR} '
-
-# # display exitcode on the right when > 0
-# return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"
-# RPROMPT=' $return_code${PR_CYAN}${PR_HBAR}${PR_BLUE}${PR_HBAR}\
-# (${PR_YELLOW}%D{%a,%b%d}${PR_BLUE})${PR_HBAR}${PR_CYAN}${PR_LRCORNER}${PR_NO_COLOUR}'
-
-# PS2='${PR_CYAN}${PR_HBAR}\
-# ${PR_BLUE}${PR_HBAR}(\
-# ${PR_LIGHT_GREEN}%_${PR_BLUE})${PR_HBAR}\
-# ${PR_CYAN}${PR_HBAR}${PR_NO_COLOUR} '
-
-PROMPT='%{$fg[cyan]%}%T%{$reset_color%} $(prompt_venv)%{$fg[green]%}%n@%m%{$reset_color%}${vcs_info_msg_0_} %{$fg[magenta]%}%~ %{$fg[magenta]%}♡%{$reset_color%} '
-
+PROMPT='%{$fg[cyan]%}%T%{$reset_color%} $(prompt_venv)%{$fg[white]%}%n@%m%{$reset_color%} %{$fg[magenta]%}%~ %{$fg[magenta]%}♡%{$reset_color%} '
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[default]="fg=white"
 ZSH_HIGHLIGHT_STYLES[command]="fg=white"
@@ -148,12 +127,12 @@ ZSH_HIGHLIGHT_STYLES[function]='fg=green'
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+autoload -U colors && colors
 plugins=(
-    git
     zsh-syntax-highlighting
 )
-
 source $ZSH/oh-my-zsh.sh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 

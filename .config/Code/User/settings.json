@@ -39,5 +39,5 @@
         "*.h5": "h5web.viewer"
     },
     "workbench.colorTheme": "Pink Cat Boo",
-    "ltex.language": "es"
+    "chat.viewSessions.orientation": "stacked"
 }
