@@ -1,0 +1,102 @@
+[icon]
+prepend_conds = [
+    { if = "dir",  text = "\uf07b", fg = "blue" },
+    { if = "exec", text = "\uf489", fg = "green" },
+]
+
+# directorios (blue)
+prepend_dirs = [
+    { name = "Desktop",   text = "\uf108", fg = "blue" },
+    { name = "Documents", text = "\uf15b", fg = "blue" },
+    { name = "Downloads", text = "\uf019", fg = "blue" },
+    { name = "Descargas", text = "\uf019", fg = "blue" },
+    { name = "Music",     text = "\uf025", fg = "blue" },
+    { name = "Pictures",  text = "\uf03e", fg = "blue" },
+    { name = "Videos",    text = "\uf03d", fg = "blue" },
+    { name = "Public",    text = "\uf0ac", fg = "blue" },
+    { name = "Projects",  text = "\uf07b", fg = "blue" },
+    { name = "Templates", text = "\uf0f6", fg = "blue" },
+    { name = "Zotero",    text = "\uf02d", fg = "blue" },
+    { name = "FCiencias", text = "\uf19c", fg = "blue" },
+    { name = "GitHub",    text = "\ue5fb", fg = "blue" },
+    { name = ".config",   text = "\uf013", fg = "blue" },
+    { name = ".git",      text = "\ue5fb", fg = "blue" },
+    { name = ".github",   text = "\ue5fb", fg = "blue" },
+]
+
+prepend_exts = [
+    # pdfs (cyan)
+    { name = "pdf",  text = "\uf1c1", fg = "cyan" },
+
+    # Comprimidos (yellow)
+    { name = "zip",  text = "\uf1c6", fg = "yellow" },
+    { name = "zst",  text = "\uf1c6", fg = "yellow" },
+    { name = "tar",  text = "\uf1c6", fg = "yellow" },
+    { name = "gz",   text = "\uf1c6", fg = "yellow" },
+    { name = "bz2",  text = "\uf1c6", fg = "yellow" },
+    { name = "xz",   text = "\uf1c6", fg = "yellow" },
+    { name = "7z",   text = "\uf1c6", fg = "yellow" },
+    { name = "rar",  text = "\uf1c6", fg = "yellow" },
+
+    # imágenes (magenta)
+    { name = "png",  text = "\uf1c5", fg = "magenta" },
+    { name = "jpg",  text = "\uf1c5", fg = "magenta" },
+    { name = "jpeg", text = "\uf1c5", fg = "magenta" },
+    { name = "gif",  text = "\uf1c5", fg = "magenta" },
+    { name = "svg",  text = "\uf1c5", fg = "magenta" },
+    { name = "webp", text = "\uf1c5", fg = "magenta" },
+    { name = "bmp",  text = "\uf1c5", fg = "magenta" },
+
+    # audio (magenta)
+    { name = "mp3",  text = "\uf001", fg = "magenta" },
+    { name = "flac", text = "\uf001", fg = "magenta" },
+    { name = "ogg",  text = "\uf001", fg = "magenta" },
+    { name = "wav",  text = "\uf001", fg = "magenta" },
+    { name = "m4a",  text = "\uf001", fg = "magenta" },
+
+    # videos (red)
+    { name = "mp4",  text = "\uf03d", fg = "red" },
+    { name = "mkv",  text = "\uf03d", fg = "red" },
+    { name = "webm", text = "\uf03d", fg = "red" },
+    { name = "avi",  text = "\uf03d", fg = "red" },
+    { name = "mov",  text = "\uf03d", fg = "red" },
+    { name = "flv",  text = "\uf03d", fg = "red" },
+
+    # texto/código
+    { name = "md",   text = "\uf48a", fg = "green" },
+    { name = "txt",  text = "\uf15c", fg = "green" },
+    { name = "toml", text = "\uf669", fg = "yellow" },
+    { name = "json", text = "\ue60b", fg = "yellow" },
+    { name = "sh",   text = "\uf489", fg = "green" },
+]
+
+[filetype]
+rules = [
+    # directorios (blue)
+    { mime = "inode/directory", fg = "blue" },
+    
+    # pdfs (cyan)
+    { mime = "application/pdf", fg = "cyan" },
+
+    # comprimidos (yellow)
+    { mime = "application/zip",             fg = "yellow" },
+    { mime = "application/zstd",            fg = "yellow" },
+    { mime = "application/x-tar",           fg = "yellow" },
+    { mime = "application/gzip",            fg = "yellow" },
+    { mime = "application/x-bzip2",         fg = "yellow" },
+    { mime = "application/x-xz",            fg = "yellow" },
+    { mime = "application/x-7z-compressed", fg = "yellow" },
+    { mime = "application/x-rar",           fg = "yellow" },
+
+    # imágenes y audio (white)
+    { mime = "image/*", fg = "white" },
+    { mime = "audio/*", fg = "white" },
+
+    # videos (rojo)
+    { mime = "video/*", fg = "red" },
+
+    # ejecutables (verde)
+    { mime = "application/x-executable",     fg = "green" },
+    { mime = "application/x-sharedlib",      fg = "green" },
+    { mime = "application/x-shellscript",    fg = "green" },
+]

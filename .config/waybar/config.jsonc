@@ -1,0 +1,173 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 0,
+
+    "margin-top": 8,
+    "margin-left": 0,
+    "margin-right": 0,
+
+    "modules-left": ["niri/window", "niri/workspaces"],
+    "modules-center": ["custom/dashboard", "clock"],
+    "modules-right": [
+        "custom/keyboard",
+        "memory",
+        // "cpu",
+        "temperature",
+        "battery",
+        "custom/sep1",
+        "network",
+        "custom/sep2",
+        "wireplumber",
+        // "mpris",
+        "custom/nightlight"
+    ],
+
+    // ════════════════════════════════════════
+    // MÓDULOS IZQUIERDA
+    // ════════════════════════════════════════
+
+    "niri/window": {
+        "format": "  {}",
+        "max-length": 40,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": " $1",
+            "(.*) - Visual Studio Code": " $1",
+            "(.*)kitty(.*)": "kitty",
+            "(.*)yazi(.*)": "yazi"
+        }
+    },
+
+    "niri/workspaces": {
+        "format": "{value}",
+        "on-scroll-up": "niri msg action focus-workspace-up",
+        "on-scroll-down": "niri msg action focus-workspace-down"
+    },
+
+    // ════════════════════════════════════════
+    // MÓDULOS CENTRO
+    // ════════════════════════════════════════
+
+    "custom/dashboard": {
+        "format": "",
+        "tooltip-format": "Dashboard",
+        "on-click": "bash -c '~/.config/rofi/powermenu/type-5/powermenu.sh'"
+    },
+
+    "clock": {
+        "format": "{:%A, %d %B %Y  %H:%M}",
+        "on-click": "kitty --app-id calcurse-popup -e calcurse",
+        "timezones": ["America/Mexico_City", "America/New_York"]
+    },
+
+    // ════════════════════════════════════════
+    // MÓDULOS DERECHA
+    // ════════════════════════════════════════
+    
+    "custom/keyboard": {
+        "exec": "niri msg keyboard-layouts | grep '\\*' | sed 's/.*\\* [0-9]* //' | cut -c1-2 | tr '[:upper:]' '[:lower:]'",
+        "interval": 1,
+        "format": "{}",
+        "tooltip": false
+    },
+    
+    "memory": {
+        "format": "{percentage}%",
+        "interval": 2,
+        "tooltip-format": "{used:.1f}G / {total:.1f}G"
+    },
+    
+    "cpu": {
+        "format": "{usage}%",
+        "interval": 2,
+        "tooltip-format": "{usage}% — {avg_frequency:.2f} GHz"
+    },
+    
+    "temperature": {
+        "format": "{temperatureC}°",
+        "format-critical": "{temperatureC}°",
+        "critical-threshold": 80,
+        "interval": 2,
+        "tooltip-format": "CPU: {temperatureC}°C"
+    },
+    
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-charging": "{icon}󱐋 {capacity}%",
+        "format-plugged": "{icon} {capacity}%",
+        "format-plugged-icons": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+        "states": {
+            "warning":  25,
+            "critical": 10
+        },
+        "interval": 15,
+        "tooltip-format": "{timeTo} — {power:.1f}W"
+    },
+    
+    // Separadores — color #ebbcba
+    "custom/sep1": {
+        "format":  "|",
+        "tooltip": false
+    },
+    "custom/sep2": {
+        "format":  "|",
+        "tooltip": false
+    },
+    
+    "network": {
+        "format-wifi": "{icon}", 
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤢", "󰤨"],
+        "format-disconnected": "󰤫",
+        "format-disabled": "󰤮",
+        "format-ethernet": "",
+        "format-linked": "󰈁",
+        "interval": 5,
+        "tooltip-format-wifi": "{essid}  {signalStrength}%  {ipaddr}",
+        "tooltip-format-ethernet": "{ifname}  {ipaddr}",
+        "tooltip-format-disconnected": "Disconectado",
+        "on-click": "kitty nmtui"
+    },
+    
+    "wireplumber": {
+        "format": "{icon} [{volume}]",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "format-muted": "󰖁",
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "tooltip-format": "{volume}% — {node_name}"
+    },
+    
+    "mpris": {
+        "format": "{player_icon}  {title}",
+        "format-paused":  "{player_icon}  {title}",
+        "format-stopped": "",
+        "player-icons": {
+            "default":  "",
+            "spotify":  "",
+            "firefox":  "󰈹",
+            "chromium": ""
+        },
+        "status-icons": {
+            "paused": ""
+        },
+        "max-length": 35,
+        "interval": 2,
+        "on-click": "playerctl play-pause",
+        "on-click-right":"playerctl next",
+        "tooltip-format": "{player}: {title}\n{artist}\n{album}"
+    },
+    
+    "custom/nightlight": {
+        "exec": "pgrep -x wlsunset >/dev/null && printf '{\"text\":\"\\uf186\",\"class\":\"on\",\"tooltip\":\"Nightlight ON\"}' || printf '{\"text\":\"\\uf522\",\"class\":\"off\",\"tooltip\":\"Nightlight OFF\"}'",
+        "on-click": "pgrep -x wlsunset >/dev/null && pkill -x wlsunset || setsid -f wlsunset -T 3820 -t 3800 -g 1",
+        "return-type": "json",
+        "interval": 2,
+        "format": "{}",
+        "tooltip": true
+    },
+}

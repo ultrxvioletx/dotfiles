@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! pgrep -x "swww-daemon" > /dev/null; then
+    awww-daemon &
+    sleep 1
+fi
+
 PINK="$HOME/pixelpink.jpg"
 PURPLE="$HOME/pixelpurple.jpg"
 

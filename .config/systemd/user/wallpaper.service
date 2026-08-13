@@ -8,7 +8,6 @@ Type=oneshot
 
 Environment="DISPLAY=:0"
 Environment="WAYLAND_DISPLAY=wayland-1"
-Environment="HYPRLAND_INSTANCE_SIGNATURE=%t/hypr"
 ExecStart=/home/ultrxvioletx/.config/hypr/scripts/wallpaper.sh
 
 [Install]

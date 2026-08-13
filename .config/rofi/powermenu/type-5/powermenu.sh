@@ -11,7 +11,7 @@
 
 # Current Theme
 dir="$HOME/.config/rofi/powermenu/type-5"
-theme='style-1'
+theme='style-3'
 
 # CMDs
 lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
@@ -19,20 +19,20 @@ uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
 
 # Options
-hibernate=''
-shutdown=''
-reboot=''
-lock=''
-suspend=''
-logout=''
-yes=''
-no=''
+hibernate=''
+shutdown=''
+reboot=''
+lock='󰌾'
+suspend='󰤄'
+logout=''
+yes=''
+no=''
 
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-p " $USER@$host" \
-		-mesg " Last Login: $lastlogin |  Uptime: $uptime" \
+		-p "♥ $USER" \
+		-mesg "󰉊  Last Login: $lastlogin |   Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
 }
 
@@ -45,7 +45,7 @@ confirm_cmd() {
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
 		-dmenu \
 		-p 'Confirmation' \
-		-mesg 'Are you Sure?' \
+		-mesg '?' \
 		-theme ${dir}/${theme}.rasi
 }
 
@@ -70,18 +70,22 @@ run_cmd() {
 		elif [[ $1 == '--hibernate' ]]; then
 			systemctl hibernate
 		elif [[ $1 == '--suspend' ]]; then
-			mpc -q pause
-			amixer set Master mute
+			playerctl pause 2>/dev/null
+			wpctl set-mute @DEFAULT_AUDIO_SINK@ 1
 			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
-			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
-				openbox --exit
+			if [[ "$XDG_CURRENT_DESKTOP" == "niri" ]]; then
+					niri msg action quit --skip-confirmation
+			elif [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
+					openbox --exit
 			elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then
-				bspc quit
+					bspc quit
 			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
-				i3-msg exit
+					i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
-				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+					qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+			else
+					hyprctl dispatch exit
 			fi
 		fi
 	else
@@ -102,12 +106,18 @@ case ${chosen} in
 		run_cmd --hibernate
         ;;
     $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
-		fi
-        ;;
+    if [[ "$XDG_CURRENT_DESKTOP" == "niri" ]]; then
+        loginctl lock-session
+    else
+        if [[ -x '/usr/bin/betterlockscreen' ]]; then
+            betterlockscreen -l
+        elif [[ -x '/usr/bin/i3lock' ]]; then
+            i3lock
+        else
+            swaylock -f
+        fi
+    fi
+				;;
     $suspend)
 		run_cmd --suspend
         ;;

@@ -19,6 +19,8 @@
 # ignoramos todo lo que hay dentro de .config por defecto
 .config/*
 # incluimos explícitamente solo ciertas sub-carpetas
+!.config/calcurse/
+!.config/calcurse/**
 !.config/Code/
 !.config/Code/User/
 !.config/Code/User/settings.json
@@ -36,6 +38,8 @@
 !.config/hyprpanel/**
 !.config/kitty/
 !.config/kitty/**
+!.config/niri/
+!.config/niri/**
 # !.config/nvim/
 !.config/rofi/
 !.config/rofi/**
@@ -54,6 +58,8 @@
 !.config/xsettingsd/**
 !.config/yazi/
 !.config/yazi/**
+!.config/waybar/
+!.config/waybar/**
 
 # ignorar cache de python y compilados
 **/__pycache__/

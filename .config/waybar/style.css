@@ -1,0 +1,351 @@
+@define-color bg-bar       rgba(29, 32, 33, 0);      /* transparent (theme.bar.opacity: 0) */
+@define-color bg-module    rgba(40, 40, 40, 0.5);    /* #282828 @ 50% (background_opacity: 50) */
+@define-color bg-module-hover rgba(80, 73, 69, 0.7); /* #504945 hover */
+@define-color bg-dark      #1d2021;                  /* theme.bar.background */
+
+@define-color fg           #e0def4;   /* texto principal */
+@define-color rose         #ebbcba;
+@define-color pink         #d3869b;
+@define-color mauve        #b16286;
+@define-color green        #94a89a;
+@define-color marron       #746771;
+@define-color iris         #c4a7e7;
+@define-color lavender     #9490a2;   /* muted / inactive */
+@define-color gray-dark    #797d81;   /* hover */
+@define-color gray-darker  #3c3836;   /* borders on menus */
+
+* {
+    font-family: FreeMono, "JetBrainsMono Nerd Font", "Symbols Nerd Font", "Noto Sans", monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+
+window#waybar {
+    background: @bg-bar;
+    color: @fg;
+}
+
+/* fondo de las secciones */
+.modules-left,
+.modules-center,
+.modules-right {
+    background: transparent;
+}
+
+/* ══════════════════════════════════════════════════════
+   MÓDULO BASE
+   ══════════════════════════════════════════════════════ */
+#window,
+#workspaces,
+#custom-dashboard,
+#custom-nightlight,
+#custom-keyboard,
+#clock,
+#memory,
+#cpu,
+#temperature,
+#battery,
+#network,
+#wireplumber,
+#mpris,
+#tray {
+    background: @bg-module;
+    border-radius: 0.4em;
+    padding: 0.2rem 0.65rem;
+    margin: 2px 3px;   /* top/bottom 4px = 0.2em @ 20px; sides = outer_spacing */
+    color: @fg;
+    transition: background 0.15s ease;
+}
+
+#window:hover,
+#custom-dashboard:hover,
+#custom-nightlight:hover,
+#custom-keyboard:hover,
+#clock:hover,
+#memory:hover,
+#cpu:hover,
+#temperature:hover,
+#battery:hover,
+#network:hover,
+#wireplumber:hover,
+#mpris:hover,
+#tray:hover {
+    background: @bg-module-hover;
+}
+
+/* ══════════════════════════════════════════════════════
+   WORKSPACES
+   ══════════════════════════════════════════════════════ */
+#workspaces {
+    padding: 0.2rem 0.3rem;
+}
+
+#workspaces button {
+    background: transparent;
+    border-radius: 0.3em;
+    padding: 0.1rem 0.5rem;
+    margin: 0 1px;
+    color: @fg; /* available */
+    font-weight: 600;
+    transition: all 0.15s ease;
+    border-bottom: 2px solid transparent;
+}
+
+/* (occupied) */
+#workspaces button.active {
+    color: @rose;
+}
+
+/* activo/enfocado */
+#workspaces button.focused,
+#workspaces button.active.focused {
+    color: @iris;
+    border-bottom: 2px solid @iris;
+}
+
+#workspaces button:hover {
+    background: rgba(80, 73, 69, 0.5);
+}
+
+/* ══════════════════════════════════════════════════════
+   WINDOW TITLE
+   ══════════════════════════════════════════════════════ */
+#window {
+    color: @fg;
+}
+
+/* icono del módulo */
+#window label {
+    color: @fg;
+}
+
+/* cuando no hay ventana activa */
+window#waybar.empty #window {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   DASHBOARD BUTTON
+   ══════════════════════════════════════════════════════ */
+#custom-dashboard {
+    color: @rose;
+    padding: 0.5rem 0.5rem;
+}
+
+#custom-dashboard:hover {
+    background: rgba(80, 73, 69, 0.5);
+}
+
+/* ══════════════════════════════════════════════════════
+CLOCK
+══════════════════════════════════════════════════════ */
+#clock {
+    color: @fg;
+}
+
+/* ══════════════════════════════════════════════════════
+NIGHTLIGHT
+══════════════════════════════════════════════════════ */
+#custom-nightlight {
+    font-family: "Symbols Nerd Font Mono";
+    font-size: 15px;
+}
+#custom-nightlight.on  {
+    color: @fg;
+}
+#custom-nightlight.off {
+    color: @fg;
+}
+
+/* ══════════════════════════════════════════════════════
+KEYBOARD
+══════════════════════════════════════════════════════ */
+#custom-keyboard {
+    color: @lavender;
+    padding: 0.5rem 0.5rem;
+}
+
+/* ══════════════════════════════════════════════════════
+MEMORIA (RAM)
+══════════════════════════════════════════════════════ */
+#memory {
+    color: @fg;
+}
+
+/* ══════════════════════════════════════════════════════
+CPU
+══════════════════════════════════════════════════════ */
+#cpu {
+    color: @fg;
+}
+
+/* ══════════════════════════════════════════════════════
+TEMPERATURA
+══════════════════════════════════════════════════════ */
+#temperature {
+    color: @fg;
+}
+
+#temperature.critical {
+    color: @mauve;
+    background: rgba(204, 36, 29, 0.2);
+    animation: blink 1s steps(1) infinite;
+}
+
+/* ══════════════════════════════════════════════════════
+BATERÍA
+══════════════════════════════════════════════════════ */
+#battery {
+    color: @rose;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @rose;
+}
+
+#battery.warning:not(.charging) {
+    color: @aqua;
+}
+
+#battery.critical:not(.charging) {
+    color: @mauve;
+    background: rgba(204, 36, 29, 0.25);
+    animation:  blink 1s steps(1) infinite;
+}
+
+/* ══════════════════════════════════════════════════════
+SEPARADORES
+══════════════════════════════════════════════════════ */
+#custom-sep1,
+#custom-sep2 {
+    background: transparent;
+    border-radius: 0;
+    padding: 0 0;
+    margin: 0 0;
+    color: @marron;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+/* ══════════════════════════════════════════════════════
+RED (NETWORK)
+══════════════════════════════════════════════════════ */
+#network {
+    color: @rose;
+    padding: 0.5rem 0.5rem;
+}
+
+#network.disabled,
+#network.disconnected {
+    color: @lavender;
+    background: rgba(146, 131, 116, 0.1);
+}
+
+/* ══════════════════════════════════════════════════════
+   VOLUMEN (wireplumber)
+   ══════════════════════════════════════════════════════ */
+#wireplumber {
+    color: @rose;
+}
+
+#wireplumber.muted {
+    color: @lavender;
+    background: rgba(146, 131, 116, 0.15);
+}
+
+/* ══════════════════════════════════════════════════════
+   MEDIA (mpris / playerctl)
+   icon/text/border: #83a598 (aqua)
+   show_active_only: true → se oculta si no hay reproducción
+   ══════════════════════════════════════════════════════ */
+#mpris {
+    color: @green;
+}
+
+#mpris.stopped {
+    background:    transparent;
+    padding:       0;
+    margin:        0;
+    min-width:     0;
+}
+
+/* ══════════════════════════════════════════════════════
+   SYSTEM TRAY
+   icon_size: 18, spacing: 6
+   border: #504945, background: #282828
+   ══════════════════════════════════════════════════════ */
+#tray {
+    color: @fg;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background:       rgba(204, 36, 29, 0.3);
+    border-radius:    0.3em;
+}
+
+/* ══════════════════════════════════════════════════════
+   ANIMACIONES
+   ══════════════════════════════════════════════════════ */
+@keyframes blink {
+    to { opacity: 0.4; }
+}
+
+/* ══════════════════════════════════════════════════════
+   TOOLTIPS — estilo del dashboard/menus de hyprpanel
+   background: #1d2021, border: #3c3836, text: #e0def4
+   ══════════════════════════════════════════════════════ */
+tooltip {
+    background:    @bg-dark;
+    border:        1px solid @gray-darker;
+    border-radius: 0.4em;
+    color:         @fg;
+    font-family:   FreeMono, monospace;
+    font-size:     0.9rem;
+    padding:       4px 8px;
+}
+
+tooltip label {
+    color: @fg;
+}
+
+/* ══════════════════════════════════════════════════════
+   CALENDARIO (en el tooltip del clock)
+   ══════════════════════════════════════════════════════ */
+calendar {
+    background:    @bg-dark;
+    color:         @fg;
+    border-radius: 0.4em;
+    padding:       8px;
+}
+
+calendar:selected {
+    background:    @pink;
+    color:         @bg-dark;
+    border-radius: 0.2em;
+}
+
+calendar.header {
+    color:       @pink;
+    font-weight: 700;
+}
+
+calendar.button {
+    color: @aqua;
+}
